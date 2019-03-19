@@ -1,7 +1,7 @@
 version: '3'
 services:
     imremoter:
-      container_name: imremoter
+      container_name: ignacio82/imremoter
       image: imremoter
       restart: unless-stopped
       network_mode: host
