@@ -1,0 +1,13 @@
+version: '3'
+services:
+    imremoter:
+      container_name: imremoter
+      image: imremoter
+      restart: unless-stopped
+      network_mode: host
+      environment:
+          - TZ=america/new_york
+          - api_key=my_super_secret_password
+      ports:
+          - 1982:1982
+
