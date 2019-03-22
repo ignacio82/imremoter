@@ -1,0 +1,7 @@
+library(IMS3)
+set.enviroment()
+setwd("/home/rstudio")
+aws.s3::s3sync(bucket = "ignacios-test-bucket", direction = "download")
+rmarkdown::render(input = "./example.Rmd")
+aws.s3::put_object("./example.html", bucket = "ignacios-test-bucket", object = "example.html")
+file.remove("example.Rmd", "example.html")

@@ -1,1 +1,9 @@
+# To get the remoter server up an running you just need to run
+
+```bash
 docker-compose up -d
+```
+
+# Example
+
+On your local computer you can execute `example.R` to render `example.Rmd` on your remote instance. 
