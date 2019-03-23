@@ -12,11 +12,14 @@ my_vm <- run_instances(image = "ami-05f39d58b5ff0d8e2", # My remoter ami
 
 vm_status <- instance_status(my_vm)
 
-while (length(vm_status$item$instanceStatus$status)==0 | vm_status$item$instanceStatus$status !="ok") {
+while (length(vm_status$item$instanceStatus$status)==0) {
   message(glue::glue("Instance is {vm_status$item$instanceStatus$status}."))
   Sys.sleep(20)
   vm_status <- instance_status(my_vm)
-  if(vm_status$item$instanceStatus$status =="ok") message("The instance is ready.")
+  if(length(vm_status$item$instanceStatus$status)!=0) {
+    if(vm_status$item$instanceStatus$status =="ok") message("The instance is ready.")
+  }
+  
 }
 
 # Run job 
