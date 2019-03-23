@@ -19,7 +19,6 @@ while (length(vm_status$item$instanceStatus$status)==0) {
   if(length(vm_status$item$instanceStatus$status)!=0) {
     if(vm_status$item$instanceStatus$status =="ok") message("The instance is ready.")
   }
-  
 }
 
 # Run job 
