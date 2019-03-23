@@ -1,4 +1,3 @@
-# IMS3::set.enviroment() # A personal package that sets my S3 credentials
 library(aws.ec2)
 library(aws.s3)
 IMSecrets::AWS()  # Personal package that setup the enviromental variables for aws
