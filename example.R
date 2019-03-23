@@ -11,13 +11,15 @@ my_vm <- run_instances(image = "ami-05f39d58b5ff0d8e2", # My remoter ami
                        sgroup = "sg-073bb39404d5b2c8a") # A security group that only allows remoter connections
 
 vm_status <- instance_status(my_vm)
+is_initialized <- FALSE
 
-while (length(vm_status$item$instanceStatus$status)==0) {
+while (!is_initialized) {
   message(glue::glue("Instance is {vm_status$item$instanceStatus$status}."))
   Sys.sleep(20)
   vm_status <- instance_status(my_vm)
   if(length(vm_status$item$instanceStatus$status)!=0) {
     if(vm_status$item$instanceStatus$status =="ok") message("The instance is ready.")
+    is_initialized <- TRUE
   }
 }
 
