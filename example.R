@@ -13,7 +13,7 @@ my_vm <- run_instances(image = "ami-05f39d58b5ff0d8e2", # My remoter ami
 
 vm_status <- instance_status(my_vm)
 
-while (is.null(vm_status$item$instanceStatus$status) | vm_status$item$instanceStatus$status !="ok") {
+while (length(vm_status$item$instanceStatus$status)==0 | vm_status$item$instanceStatus$status !="ok") {
   message(glue::glue("Instance is {vm_status$item$instanceStatus$status}."))
   Sys.sleep(20)
   vm_status <- instance_status(my_vm)
