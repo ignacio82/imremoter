@@ -14,7 +14,7 @@ vm_status <- instance_status(my_vm)
 is_initialized <- FALSE
 
 while (!is_initialized) {
-  message(glue::glue("Instance is {vm_status$item$instanceStatus$status}."))
+  message("Instance is initializing. This can take a while")
   Sys.sleep(20)
   vm_status <- instance_status(my_vm)
   if(length(vm_status$item$instanceStatus$status)!=0) {
