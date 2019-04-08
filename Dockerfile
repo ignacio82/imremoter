@@ -18,7 +18,7 @@ RUN apt-get update \
     ggjoy \
     tictoc \
     bayesplot \
-    && R -e "drat::addRepo(account = 'Ignacio', alturl = 'https://drat.ignacio.website/') ; install.packages('IMS3')"
+    aws.signature
 
 COPY R/Makevars /root/.R/Makevars
 
