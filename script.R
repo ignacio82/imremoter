@@ -1,4 +1,4 @@
-library(IMS3)
+library(aws.s3)
 set.enviroment()
 setwd("/home/rstudio")
 message("Downloading files")
