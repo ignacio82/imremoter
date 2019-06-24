@@ -1,26 +1,26 @@
-FROM rocker/verse:latest
-LABEL maintainer="Ignacio Martinez <ignacio@protonmail.com>"
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-           libsodium-dev \
-	   libxml2-dev \
-           libssl-dev \
-           libcurl4-openssl-dev \
-    && install2.r --error --deps TRUE \
-    remotes \
-    remoter \
-    sodium  \
-    drat    \
+FROM rocker/r-ubuntu:18.04
+LABEL maintainer="Ignacio Martinez <imartinez@mathematica-mpr.com>"
+
+# Install dependencies
+RUN apt-get update -qq && apt-get install -y \
+    libsodium-dev \
+	libxml2-dev \
+    libssl-dev \
+    libcurl4-openssl-dev \
+    r-cran-tidyverse \
+    r-cran-remotes \
+    r-cran-remoter \
+    r-cran-sodium \
+    r-cran-drat \
+    r-cran-rstan \
+    r-cran-rstanarm \
+    r-cran-rstan \
+    && install.r \
+    RcppArmadillo \
+    RcppEigen \
     StanHeaders \
-    rstan \
-    rstanarm \
-    KernSmooth \
-    ggjoy \
-    tictoc \
-    bayesplot \
     aws.signature \
-    aws.s3 \
-    && R -e "drat::addRepo(account = 'Ignacio', alturl = 'https://drat.ignacio.website/') ; install.packages('IMS3')"
+    aws.s3 
 
 COPY R/Makevars /root/.R/Makevars
 
